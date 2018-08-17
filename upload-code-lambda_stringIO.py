@@ -4,7 +4,6 @@ import zipfile
 import mimetypes
 
 def lambda_handler(event, context):
-    import boto3
     sns = boto3.resource("sns")
     topic = sns.Topic("arn:aws:sns:us-east-1:343947706689:DeployPortfolio")
     location = {
@@ -12,7 +11,7 @@ def lambda_handler(event, context):
         "objectKey" : "artifacts.zip"
     }
     try:
-        job = event.get("CodePipeline.Job")
+        job = event.get("CodePipeline.job")
         
         if job:
             for artifact in job["data"]["inputArtifacts"]:
@@ -36,7 +35,7 @@ def lambda_handler(event, context):
         topic.publish(Message="Portfolio Deployed - Deploy Successfully",Subject="Portfolio Deployed")
         if job:
             codePipeline = boto3.client('codepipeline')
-            codePipeline.put_job_success_result(jobId = job["Id"])
+            codePipeline.put_job_success_result(jobId=job["id"])
     except Exception, e:
         topic.publish(Message="Portfolio Deployment Failed",Subject="Portfolio Deployment Failed")
         raise e
