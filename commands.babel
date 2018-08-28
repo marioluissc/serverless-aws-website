@@ -1,0 +1,5 @@
+https://unpkg.com/babel-standalone@6.24.2/babel.js
+
+brew install npm
+npm install -g local-web-server
+
