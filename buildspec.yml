@@ -7,6 +7,7 @@ phases:
 artifacts:
     files:
         - babel.html
+        - react.html
         - index.html
         - favicon.ico
         - styles/main.css
