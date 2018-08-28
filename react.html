@@ -40,23 +40,20 @@
                     body: "Welcome: " + name
                 }});
             }
-              render() {
-                let message = this.state.message;
-                return (
-                <div>
-                <label>Name: <input ref="nameInput" type="text"/></label>
-                <button onClick={this.buttonClicked}> Click Me </button>
-                    <MessageBox type={message.type} message={message.body}/>
-                </div>
-                )
-              }
+            render() {
+            let message = this.state.message;
+            return (
+            <div>
+            <label>Name: <input ref="nameInput" type="text"/></label>
+            <button onClick={this.buttonClicked}> Click Me </button>
+                <MessageBox type={message.type} message={message.body}/>
+            </div>
+            )
+            }
           }
 
           class MessageBox extends React.Component {
-          
-            
             render() {
-                
                 return (
                     <div className="messgaeBox"> {this.props.message} </div>
                 )
