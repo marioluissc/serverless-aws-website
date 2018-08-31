@@ -6,6 +6,7 @@
     <title>React Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://unpkg.com/mocha@5.2.0/mocha.css" />
     <style media="screen">
         .error {
             border-color: red;
@@ -15,10 +16,14 @@
 </head>
 <body>
         <main id="content"></main>
+        <main id="mocha"></main>
 
         <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
         <script src="https://unpkg.com/react@15.3.1/dist/react.min.js"></script>
         <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
+        <script src="https://unpkg.com/chai@4.1.2/chai.js"></script>
+        <script src="https://unpkg.com/mocha@5.2.0/mocha.js"></script>
+        
         <script type="text/babel" data-presets="react">
           
           
@@ -62,6 +67,36 @@
 
           ReactDOM.render(<NameInput/>, document.getElementById('content'));
             
+
         </script>
+
+<script type="text/babel" data-presets="react">
+    const assert = chai.assert;
+
+    //assert.equal(3+2,5, "It works");
+
+   // assert.notEqual(3+2,5, "This is wrong");
+    let myName = "Robin";
+    
+
+    mocha.ui("bdd");
+    mocha.reporter("html");
+
+    describe("Example Tests", function name(params) {
+        it("Prove that math works", () => {
+            assert.equal(3+2,5, "It works");
+            assert.notEqual(3+2,5, "This is wrong");
+        });
+
+        it("Found our components", () => {
+            assert.isDefined(MessageBox, "Message Box is defined");
+        });
+
+    });
+
+    mocha.run();
+
+</script>
+
 </body>
 </html>
